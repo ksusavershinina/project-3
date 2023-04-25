@@ -1,8 +1,13 @@
 const userService = require('../service/user-s')
+const {validationResult} = require("express-validator");
 
 class UserController {
     async registration(req,res) {
         try {
+            const errors = validationResult(req)
+            if (!errors.isEmpty()) {
+                return res.json({message: "пиздец в реге, чето хуйню ввёл", errors})
+            }
             const {email, password,role} = req.body
             const userData = await userService.registration(email,password,role)
             res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly: true})
@@ -10,6 +15,7 @@ class UserController {
         }
         catch (e) {
             console.log(e)
+
             res.json({message:"пиздец в реге"})
         }
     }
@@ -38,12 +44,14 @@ class UserController {
         }
     }
 
-    async active(req,res) {
+    async activate(req,res) {
         try {
-
+            const activationLink = req.params.link
+            await userService.activate(activationLink)
+            return res.redirect(process.env.CLIENT_URL)
         }
         catch (e) {
-
+            console.log(e)
         }
     }
 

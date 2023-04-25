@@ -5,6 +5,7 @@ const mailService = require('./mail-s')
 const tokenService = require('./token-s')
 const UserDto = require('../dtos/user-dto')
 const Role = require('../models/Role')
+const { validationResult} = require('express-validator')
 
 class UserService {
     async registration(email,password,role){
@@ -16,8 +17,8 @@ class UserService {
         const userRole = await Role.findOne({value: role})
         const activationLink = uuid.v4()
 
-        const user = await userModel.create({email,password: hashPassword, activationLink,roles: userRole.value})
-        await mailService.sendActivationMail(email,activationLink)
+        const user = await userModel.create({email: email,password: hashPassword, activationLink,roles: userRole.value})
+        await mailService.sendActivationMail(email,`${process.env.API_URL}/api/activate/${activationLink}`)
 
         const userDto = new UserDto(user)
         const tokens = tokenService.generateTokens({...userDto})
@@ -65,6 +66,16 @@ class UserService {
         await tokenService.saveToken(userDto.id, tokens.refreshToken);
         return {...tokens, user: userDto}
     }
+
+    async activate(activationLink) {
+        const user = await userModel.findOne({activationLink})
+        if (!user) {
+            throw new Error('пользователь не найден')
+        }
+        user.isActivated = true
+        await user.save()
+    }
+
 }
 
 module.exports = new UserService()

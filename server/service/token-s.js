@@ -10,15 +10,6 @@ class TokenService {
             refreshToken
         }
     }
-    validateAToken(token) {
-        try {
-            const userData = jwt.verify(token, process.env.JWT_ACCSES_SECRET)
-            return userData
-        }
-        catch (e) {
-            return null
-        }
-    }
 
     validateRToken(token) {
         try {
