@@ -5,7 +5,6 @@ const mailService = require('./mail-s')
 const tokenService = require('./token-s')
 const UserDto = require('../dtos/user-dto')
 const Role = require('../models/Role')
-const { validationResult} = require('express-validator')
 
 class UserService {
     async registration(email,password,role){
