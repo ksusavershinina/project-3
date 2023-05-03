@@ -36,13 +36,19 @@ class UserService {
             throw new Error('Неверное имя пользователя или пароль')
         }
         const isPassEquals = await bcrypt.compare(password, user.password);
+
         if (!isPassEquals) {
             throw new Error('Неверное имя пользователя или пароль')
         }
         const userDto = new UserDto(user);
         const tokens = tokenService.generateTokens({...userDto});
 
+
         await tokenService.saveToken(userDto.id, tokens.refreshToken);
+
+        const student = await Student.findOne({ createdBy: user._id });
+        userDto.student = student;
+
         return {...tokens, user: userDto}
     }
 
