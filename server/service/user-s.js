@@ -5,6 +5,7 @@ const mailService = require('./mail-s')
 const tokenService = require('./token-s')
 const UserDto = require('../dtos/user-dto')
 const Role = require('../models/Role')
+const projectModel = require('../models/Project')
 
 class UserService {
     async registration(email,password,role){
@@ -74,7 +75,6 @@ class UserService {
         user.isActivated = true
         await user.save()
     }
-
 }
 
 module.exports = new UserService()

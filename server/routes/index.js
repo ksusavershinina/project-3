@@ -1,6 +1,8 @@
 const Router = require('express').Router;
 const userController = require('../controllers/user-c');
 const {check} = require('express-validator')
+const ProjectController = require('../controllers/project-c')
+const checkAuth= require('../middleware/checkAuth')
 
 const router = new Router();
 
@@ -13,7 +15,6 @@ router.post('/login', userController.login);
 router.post('/logout', userController.logout);
 router.get('/activate/:link', userController.activate); // нету
 router.get('/refresh', userController.refresh);
-
-
+router.post('/project',checkAuth, ProjectController.create)
 
 module.exports = router;
