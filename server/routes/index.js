@@ -17,5 +17,6 @@ router.get('/activate/:link', userController.activate);
 router.get('/refresh', userController.refresh);
 router.post('/project',checkAuth, ProjectController.create)
 router.post('/registration/student',checkAuth, userController.registrationStudent)
+router.post('/registration/employer',checkAuth, userController.registrationEmployer)
 
 module.exports = router;

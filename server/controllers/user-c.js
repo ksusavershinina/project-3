@@ -1,6 +1,7 @@
 const userService = require('../service/user-s')
 const {validationResult} = require("express-validator");
 const student = require('../models/StudentModel')
+const Employer = require('../models/EmployerModel')
 
 class UserController {
     async registration(req,res) {
@@ -32,11 +33,22 @@ class UserController {
         }
     }
 
+    async registrationEmployer(req,res) {
+        try {
+            const { NameCompany,Website, Name,Telegram } = req.body;
+            const EmployerUser = new Employer({ NameCompany,Website, Name,Telegram, createdBy: req.user });
+            await EmployerUser.save();
+            res.json(EmployerUser)
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
+
     async login(req,res) {
         try {
             const {email, password} = req.body
             const userData = await userService.login(email, password)
-            const userRole = await
             res.cookie('refreshToken', userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly: true})
             return res.json(userData)
         }

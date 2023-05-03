@@ -6,6 +6,8 @@ const tokenService = require('./token-s')
 const UserDto = require('../dtos/user-dto')
 const Role = require('../models/Role')
 const Student = require('../models/StudentModel')
+const Employer = require('../models/EmployerModel')
+
 
 class UserService {
     async registration(email,password,role){
@@ -18,7 +20,7 @@ class UserService {
 
         const activationLink = uuid.v4()
 
-        const user = await userModel.create({email: email,password: hashPassword, activationLink,roles: userRole.value})
+        const user = await userModel.create({email: email,password: hashPassword, activationLink,roles:[userRole.value]})
         await mailService.sendActivationMail(email,`${process.env.API_URL}/api/activate/${activationLink}`)
 
         const userDto = new UserDto(user)
@@ -43,11 +45,19 @@ class UserService {
         const userDto = new UserDto(user);
         const tokens = tokenService.generateTokens({...userDto});
 
-
         await tokenService.saveToken(userDto.id, tokens.refreshToken);
 
         const student = await Student.findOne({ createdBy: user._id });
-        userDto.student = student;
+        if (student) {
+            userDto.student = student;
+        }
+        const employer = await Employer.findOne({ createdBy: user._id });
+
+        if (employer) {
+            userDto.employer = employer;
+        }
+
+
 
         return {...tokens, user: userDto}
     }
