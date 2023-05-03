@@ -5,7 +5,7 @@ const mailService = require('./mail-s')
 const tokenService = require('./token-s')
 const UserDto = require('../dtos/user-dto')
 const Role = require('../models/Role')
-const projectModel = require('../models/Project')
+const Student = require('../models/StudentModel')
 
 class UserService {
     async registration(email,password,role){
@@ -15,6 +15,7 @@ class UserService {
         }
         const hashPassword = await bcrypt.hash(password, 3)
         const userRole = await Role.findOne({value: role})
+
         const activationLink = uuid.v4()
 
         const user = await userModel.create({email: email,password: hashPassword, activationLink,roles: userRole.value})

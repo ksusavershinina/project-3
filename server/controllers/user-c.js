@@ -1,5 +1,6 @@
 const userService = require('../service/user-s')
 const {validationResult} = require("express-validator");
+const student = require('../models/StudentModel')
 
 class UserController {
     async registration(req,res) {
@@ -17,6 +18,17 @@ class UserController {
             console.log(e)
 
             res.json({message:"пиздец в реге"})
+        }
+    }
+    async registrationStudent(req,res) {
+        try {
+            const { Name,Telegram, Skills } = req.body;
+            const studentUser = new student({ Name,Telegram, Skills, createdBy: req.user });
+            await studentUser.save();
+            res.json(studentUser)
+        }
+        catch (e) {
+            console.log(e)
         }
     }
 
@@ -63,7 +75,6 @@ class UserController {
             return res.json(userData)
         }
         catch (e) {
-
         }
     }
 }
