@@ -8,6 +8,10 @@ module.exports = function (req, res, next) {
         }
         const decoded = jwt.verify(token, process.env.JWT_ACCSES_SECRET)
         req.user = decoded.id
+        req.email = decoded.email
+        req.password = decoded.password
+        req.isActivated = decoded.isActivated
+
         next()
     } catch (e) {
         console.log(e)

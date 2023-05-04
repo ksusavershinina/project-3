@@ -20,7 +20,15 @@ const UserSchema = new Schema({
         roles: [{
             type: String,
             ref: 'Role'
-        }]
+        }],
+        modelS : [{
+            type: String,
+            ref: 'Student'
+        }],
+        modelE: {
+            type: String,
+            ref: 'Employer'
+        }
     }
 ) 
 

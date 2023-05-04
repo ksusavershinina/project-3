@@ -1,6 +1,18 @@
 const {Schema, model} = require('mongoose')
 
 const Student = new Schema({
+    email: {
+        type: String,
+        ref: 'User'
+    },
+    password: {
+        type: String,
+        ref: 'User'
+    },
+    isActivated: {
+        type: Boolean,
+        default: false
+    },
     Name: {
         type: String,
         required: true,

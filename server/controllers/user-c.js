@@ -2,6 +2,7 @@ const userService = require('../service/user-s')
 const {validationResult} = require("express-validator");
 const student = require('../models/StudentModel')
 const Employer = require('../models/EmployerModel')
+const User =require ('../models/User')
 
 class UserController {
     async registration(req,res) {
@@ -23,10 +24,15 @@ class UserController {
     }
     async registrationStudent(req,res) {
         try {
-            const { Name,Telegram, Skills } = req.body;
-            const studentUser = new student({ Name,Telegram, Skills, createdBy: req.user });
+            const { Name, Telegram, Skills } = req.body;
+            const studentUser = new student({ Name, Telegram, Skills, createdBy: req.user,email: req.email, password: req.password, isActivated: req.isActivated  });
             await studentUser.save();
-            res.json(studentUser)
+
+            const user = await User.findById(req.user);
+            user.modelS = studentUser;
+            await user.save();
+
+            res.json(studentUser);
         }
         catch (e) {
             console.log(e)
@@ -36,8 +42,13 @@ class UserController {
     async registrationEmployer(req,res) {
         try {
             const { NameCompany,Website, Name,Telegram } = req.body;
-            const EmployerUser = new Employer({ NameCompany,Website, Name,Telegram, createdBy: req.user });
+            const EmployerUser = new Employer({ NameCompany,Website, Name,Telegram, createdBy: req.user,email: req.email, password: req.password, isActivated: req.isActivated   });
             await EmployerUser.save();
+
+            const user = await User.findById(req.user)
+            user.modelsE = EmployerUser
+            await user.save()
+
             res.json(EmployerUser)
         }
         catch (e) {
