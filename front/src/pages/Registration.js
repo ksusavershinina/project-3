@@ -14,6 +14,7 @@ const Registration = (props) => {
     const [roleChoice, setRole] = useState(false)
     const [mode, setMode] = useState([props.mode, 0])
     const [showProfile, setShowProfile] = useState(false)
+    const [authToken, setAuthToken] = useState('')
 
     const handleRoleChange = () => {
         setRole(!roleChoice)
@@ -22,16 +23,25 @@ const Registration = (props) => {
     const handleSignUp = async (e) => {
         e.preventDefault()
 
-        const role = roleChoice ? "заказчик" : "студент";
+        const role = roleChoice ? "employer" : "student";
 
         try {
             await axios.post("http://localhost:5000/api/registration", {
                 email,
                 password,
                 role
-            }).then(res => console.log(res))
+            }).then(res => {
+                if (res.data.message !== undefined) {
+                    alert(res.data.message)
+                }
+                else {
+                    setAuthToken(res.data.accessToken)
+                    props.setIsSignedIn(true)
+                    console.log(res);
+                }
+            })
 
-            if (role === 'студент') {
+            if (role === 'student') {
                 setShowProfile(true)
             }
 
@@ -72,7 +82,7 @@ const Registration = (props) => {
     }
 
     if (showProfile) {
-        return <UserProfile />
+        return <UserProfile accessToken={authToken} email={email} />
     }
     else {
         return (

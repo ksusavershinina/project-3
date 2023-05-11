@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const UserProfile = () => {
+const UserProfile = ({accessToken, email}) => {
 
     const [name, setName] = useState('')
     const [telegram, setTelegram] = useState('')
@@ -18,13 +18,19 @@ const UserProfile = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': accessToken
+        }
 
         try {
-            await axios.post("http://localhost:5000/api/registration/student", {
-                name,
-                telegram,
-                skills
-            }).then(res => {
+            await axios.post(`http://localhost:5000/api/registration/student/`, {
+                email,
+                'Name': name,
+                'Telegram': telegram,
+                'Skills': skills
+            }, {headers: headers}).then(res => {
                 console.log(res);
                 navigate("/")
             })
