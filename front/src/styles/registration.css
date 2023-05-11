@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Ubuntu', 'Furore', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .role_checked {
@@ -73,7 +73,7 @@ form.sign-in-form {
 .title {
   font-size: 36px;
   color: #5D13E7;
-  margin-bottom: 90px;
+  margin-bottom: 10vh;
 }
 .input-field {
   width: 100%;
@@ -95,6 +95,16 @@ form.sign-in-form {
   font-size: 24px;
   font-weight: 400;
   color: #000;
+}
+
+.mistake-text {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  align-self: self-start;
+  color: #FF0000;
 }
 
 .check-customer {
@@ -140,7 +150,7 @@ form.sign-in-form {
 }
 
 .btn {
-  width: 375px;
+  width: 26vw;
   height: 60px;
   border: none;
   border-radius: 10px;
@@ -163,6 +173,9 @@ form.sign-in-form {
   color: #5D13E7;
   text-decoration: underline #5d13e746 0.5px;
 }
+#sign-in-btn2, #sign-up-btn2 {
+  display: none;
+}
 
 .signin-text:hover{
   color:#4a10b5;
@@ -182,21 +195,16 @@ form.sign-in-form {
 .panel {
   position: relative;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
+  min-width: 238px;
   z-index: 6;
   width: 45%;
   height: 100%;
 }
-p.level-up {
-  font-family: 'Furore', sans-serif;
-  font-weight: 400;
-  font-size: 32px;
-  color: #fff;
-  text-transform: uppercase;
-  margin: 5% 0;
-}
+
 .left-panel {
   pointer-events: none;
 }
@@ -223,8 +231,8 @@ img {
 }
 .logo-img {
   margin: 6% 0 0 0;
-  height: 30%;
-  width: 30%;
+  height: 6vh;
+  width: 12vw;
 }
 
 .container.sign-in-mode::before {
@@ -266,27 +274,41 @@ img {
     pointer-events: all;
 }
 
-/* responsive */
-
-@media (max-width:779px){
-  .container{
-    width: 100vw;
-    height: 100vh;
-  }
-}
+/* responsive */ 
 
 @media (max-width:635px){
   .container::before{
     display: none;
   }
-  form{
+  form {
     width: 80%;
-
   }
-  form.sing-in-form{
+  form.sign-in-form{
     display: none;
   }
   .panels-container{
     display: none;
+  }
+  .btn {
+    width: 50vw;
+  }
+  #sign-in-btn, #sign-up-btn {
+    display: none;
+  }
+  #sign-in-btn2, #sign-up-btn2 {
+    display: initial;
+  }
+  .container.sign-in-mode2 form.sign-in-form {
+    display: flex;
+    opacity: 1;
+  }
+  .container.sign-in-mode2 form.sign-up-form {
+    display: none;
+  }
+}
+
+@media (max-width:320px) {
+  form {
+    width: 90%;
   }
 }

@@ -1,5 +1,6 @@
 import Registration from "./pages/Registration";
 import Main from "./pages/Main";
+import UserProfile from "./pages/UserProfile"
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { useState } from "react";
 
