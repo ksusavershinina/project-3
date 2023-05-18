@@ -15,17 +15,20 @@ const Student = new Schema({
     },
     Name: {
         type: String,
-        required: true,
+        //required: true,
 
     },
     Telegram: {
         type: String,
-        required: true,
+        //required: true,
         unique: true
     },
     Skills: {
         type: String,
-        required: true,
+        //required: true,
+    },
+    Avatar: {
+        type: String
     },
     createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true }
 })
