@@ -18,13 +18,13 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
 app.use('/api', router)
-
+app.use('/uploads', express.static('uploads'))
 
 const start = async() => {
     try {
     await mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.t2yr8af.mongodb.net/?retryWrites=true&w=majority`)
 
-      app.listen(PORT, () => console.log(`app up on ${PORT}`))  
+          app.listen(PORT, () => console.log(`app up on ${PORT}`))
     } catch (error) {
         console.log(error)
     }

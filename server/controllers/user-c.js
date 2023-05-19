@@ -3,6 +3,10 @@ const {validationResult} = require("express-validator");
 const student = require('../models/StudentModel')
 const Employer = require('../models/EmployerModel')
 const User =require ('../models/User')
+const path = require('path')
+const {dirname} = require('path')
+const {fileUrlToPath} = require('url')
+const Multer = require('multer')
 
 class UserController {
     async registration(req,res) {
@@ -25,7 +29,12 @@ class UserController {
     async registrationStudent(req,res) {
         try {
             const { Name, Telegram, Skills } = req.body;
-            const studentUser = new student({ Name, Telegram, Skills, createdBy: req.user,email: req.email, password: req.password, isActivated: req.isActivated  });
+            const studentUser = new student({ Name, Telegram, Skills, createdBy: req.user ,password: req.password, email: req.email,  isActivated: req.isActivated });
+            const fileName = req.file.filename;
+            const imagePath = path.join('uploads', fileName);
+            studentUser.Avatar = imagePath;
+
+
             await studentUser.save();
 
             const user = await User.findById(req.user);
