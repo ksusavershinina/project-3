@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom';
 import ReactCardSlider from '../components/ReactCardSlider';
 import SignInUpButtons from '../components/SignInUpButtons';
 import SignedInButton from '../components/SignedInButton';
+import UserProfile from './UserProfile';
+import CustomerProfile from './CustomerProfile';
 import { useState } from 'react';
 
 import google from '../images/slider/google.svg';
@@ -16,7 +18,7 @@ import Microsoft from '../images/slider/Microsoft.svg';
 import nike from '../images/slider/nike.svg';
 import uber from '../images/slider/uber.svg';
 
-const Main = ({isSignedIn}) => {
+const Main = ({isSignedIn, userData}) => {
 
 
     const slides = [
@@ -29,43 +31,53 @@ const Main = ({isSignedIn}) => {
         { image: uber },
     ];
 
+    const [showProfile, setShowProfile] = useState(false)
+
+    if (showProfile && userData.companyName === '') {
+        return <UserProfile setShowProfile={setShowProfile} userData={userData} />
+    }
+    else if (showProfile && userData.companyName !== '') {
+        return <CustomerProfile setShowProfile={setShowProfile} userData={userData} />
+    }
+    else {
     return (
         <>
-            <div className="header">
-                <div className="header__section">
+            <div className="main_header">
+                <div className="main_header__section">
                     <Link to='/'>
-                        <div className="headerlogo">
+                        <div className="main_headerlogo">
                             <img src={levelup} alt="" />
                         </div>
                     </Link> 
                 </div>
-                <div className="header__section">
-                    {isSignedIn ? <SignedInButton /> : <SignInUpButtons />}
+                <div className="main_header__section">
+                    {isSignedIn ? <SignedInButton setShowProfile={setShowProfile} /> : <SignInUpButtons />}
                 </div>
             </div>
-            <div className="wrapper">
-                <div className="text">
-                    <div className="information">
-                        <p className="h1">
+            <div className="main_wrapper">
+                <div className="main_text">
+                    <div className="main_information">
+                        <p className="main_h1">
                             Новая платформа для взаимодействия студентов и реальных заказчиков
                         </p>
-                        <p className="h3">
+                        <p className="main_h3">
                             Учавствуйте в проектах, повышайте скиллы и пополняйте своё портфолио
                         </p>
                     </div>
-                    <div className="partners">
-                        <p className="carousel-name">
+                    <div className="main_partners">
+                        <p className="main_carousel-name">
                             Наши партнеры:
                         </p>
                         <ReactCardSlider slides={slides} />
                     </div>
                 </div>
-                <div className="image">
+                <div className="main_image">
                     <img src={mainimg} alt="" />
                 </div>
             </div>
         </>
     );
+    }
 }
 
 export default Main;

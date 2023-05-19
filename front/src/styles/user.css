@@ -5,7 +5,7 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
-body {
+.user_body {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  min-height: 100%;
+  min-height: 100%;/***/
   background: #fff;
   overflow-y: auto;
 }
@@ -119,6 +119,7 @@ input[type="file"] {
   height: 5vh;
   background: #F6F6F6;
   margin: 10px 0;
+  padding: 10px;
   border-radius: 15px;
   display: flex;
   align-items: center;
