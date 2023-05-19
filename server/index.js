@@ -18,7 +18,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
 app.use('/api', router)
-app.use('/uploads', express.static('uploads'))
+app.use(express.static('uploads'))
 
 const start = async() => {
     try {
