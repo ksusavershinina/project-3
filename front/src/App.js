@@ -12,7 +12,9 @@ const App = () => {
     telegram: '',
     skills: '',
     companyName: '',
-    website: ''
+    website: '',
+    companyLogo: '',
+    personalLogo: ''
   })
 
   return (

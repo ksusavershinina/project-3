@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 // import axios from 'axios';
 
 const UserProfile = ({setShowProfile, userData}) => {
-
     // const [name, setName] = useState('')
     // const [telegram, setTelegram] = useState('')
     // const [skills, setSkills] = useState('')
@@ -70,7 +69,7 @@ const UserProfile = ({setShowProfile, userData}) => {
                         <div className="userProfileInput_wrapper">
                             <div className="userProfileInput_image">
                                 <label htmlFor="upload-btn" className='userProfileLabel'>
-                                    <img src={upload} alt="Загрузите изображение профиля" className="userProfileUpload_image" />
+                                    <img src={`http://localhost:5000/${userData.personalLogo.replace('uploads\\', '')}`} alt="Загрузите изображение профиля" className="userProfileUpload_image" />
                                 </label>
                                 {/* <input type="file" id="upload-btn" style={{"display": "none"}} /> */}
                             </div>

@@ -82,8 +82,11 @@ const Registration = (props) => {
                             telegram: res.data.user.student.Telegram,
                             skills: res.data.user.student.Skills,
                             companyName: '',
-                            website: ''
+                            website: '',
+                            companyLogo: '',
+                            personalLogo: res.data.user.student.Avatar
                         })
+                        console.log(res.data.user.student.Avatar);
                     }
                     else {
                         props.setUserData({
@@ -91,7 +94,9 @@ const Registration = (props) => {
                             name: res.data.user.employer.Name,
                             telegram: res.data.user.employer.Telegram,
                             companyName: res.data.user.employer.NameCompany,
-                            website: res.data.user.employer.Website
+                            website: res.data.user.employer.Website,
+                            companyLogo: '',
+                            personalLogo: ''
                         })
                     }
                     props.setIsSignedIn(true)

@@ -102,6 +102,11 @@ input[type="file"] {
   flex-direction: column;
 }
 
+.userProfileUpload_image {
+  width: 100%;
+  height: 100%;
+}
+
 .userProfileText_input {
   display: flex;
   flex-direction: column;
