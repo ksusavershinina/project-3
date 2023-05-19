@@ -52,6 +52,10 @@ class UserController {
         try {
             const { NameCompany,Website, Name,Telegram } = req.body;
             const EmployerUser = new Employer({ NameCompany,Website, Name,Telegram, createdBy: req.user,email: req.email, password: req.password, isActivated: req.isActivated   });
+            const fileName = req.file.filename;
+            const imagePath = path.join('uploads', fileName);
+            EmployerUser.Avatar = imagePath;
+
             await EmployerUser.save();
 
             const user = await User.findById(req.user)
