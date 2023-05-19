@@ -31,6 +31,9 @@ const Employer = new Schema({
         type: String,
         required: true
     },
+    Avatar: {
+        type: String
+    },
     createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true }
 })
 

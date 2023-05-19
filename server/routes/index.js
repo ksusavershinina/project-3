@@ -30,7 +30,7 @@ router.get('/activate/:link', userController.activate);
 router.get('/refresh', userController.refresh);
 router.post('/project',checkAuth, ProjectController.create)
 router.post('/registration/student',checkAuth,upload.single('Avatar'), userController.registrationStudent)
-router.post('/registration/employer',checkAuth, userController.registrationEmployer)
+router.post('/registration/employer',checkAuth,upload.single('Avatar'), userController.registrationEmployer)
 router.post('/upload',checkAuth, upload.single('Avatar'), (req,res) => {
     res.json({url: `/api/uploads/${req.file.originalname}`})
 })
