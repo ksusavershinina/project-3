@@ -3,98 +3,102 @@ import escape from '../images/icons/escape.svg';
 import upload from '../images/upload-img.svg';
 import '../styles/user.css';
 import '../styles/fonts.css';
+import { Link } from 'react-router-dom';
 
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import axios from 'axios';
 
-const UserProfile = ({accessToken, email}) => {
+const UserProfile = ({setShowProfile, userData}) => {
 
-    const [name, setName] = useState('')
-    const [telegram, setTelegram] = useState('')
-    const [skills, setSkills] = useState('')
+    // const [name, setName] = useState('')
+    // const [telegram, setTelegram] = useState('')
+    // const [skills, setSkills] = useState('')
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault()
         
-        const headers = {
-            'Content-Type': 'application/json',
-            'Authorization': accessToken
-        }
+    //     const headers = {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': accessToken
+    //     }
 
-        try {
-            await axios.post(`http://localhost:5000/api/registration/student/`, {
-                email,
-                'Name': name,
-                'Telegram': telegram,
-                'Skills': skills
-            }, {headers: headers}).then(res => {
-                console.log(res);
-                navigate("/")
-            })
+    //     try {
+    //         await axios.post(`http://localhost:5000/api/registration/student/`, {
+    //             email,
+    //             'Name': name,
+    //             'Telegram': telegram,
+    //             'Skills': skills
+    //         }, {headers: headers}).then(res => {
+    //             console.log(res);
+    //             navigate("/")
+    //         })
 
-            // const res = await axios.get("http://localhost:5000/api/registration")
-            // console.log(res.data);
-        }
-        catch(e) {
-            console.log(e);
-        }
-    }
+    //         // const res = await axios.get("http://localhost:5000/api/registration")
+    //         // console.log(res.data);
+    //     }
+    //     catch(e) {
+    //         console.log(e);
+    //     }
+    // }
 
     return (
+        <div className='user_body'>
         <div className="userProfileContainer">
             <header className="userProfileHeader">
                 <div className="userProfileHeader__section">
                     <div className="userProfileLogo_img">
-                        <img src={levelUpWhite} alt="" />
+                        <Link to='/'>
+                            <img src={levelUpWhite} alt="" />
+                        </Link>
                     </div>
                 </div>
                 <div className="userProfileHeader__section">
-                    <div className="userProfileEscape_img">
+                    <div className="userProfileEscape_img" style={{cursor: 'pointer'}} onClick={()=>setShowProfile(false)}>
                         <img src={escape} alt="" />
                     </div>
                 </div>
             </header>
             <div className="userProfileUser_profile">
                 <h1 className="userProfilePage_name">
-                    
-                    Создайте профиль
+                    Личный кабинет
                 </h1>
-                <form className="userProfileCreate-profile userProfileForm" onSubmit={handleSubmit}>
+                <form className="userProfileCreate-profile userProfileForm">
                     <div className="userProfileInput_fields">
                         <div className="userProfileInput_wrapper">
                             <div className="userProfileInput_image">
                                 <label htmlFor="upload-btn" className='userProfileLabel'>
                                     <img src={upload} alt="Загрузите изображение профиля" className="userProfileUpload_image" />
                                 </label>
-                                <input type="file" id="upload-btn" style={{"display": "none"}} />
+                                {/* <input type="file" id="upload-btn" style={{"display": "none"}} /> */}
                             </div>
                             <div className="userProfileText_input">
                                 <div className="userProfileInput_field">
-                                    <input type="text" placeholder="Имя..." value={name} onChange={(e)=>setName(e.target.value)} />
+                                    {userData.name}
                                 </div>
-                                {/* <div className="userProfileInput_field">
-                                    <input type="email" placeholder="Почта..." required />
-                                </div> */}
                                 <div className="userProfileInput_field">
-                                    <input type="text" placeholder="Telegram..." value={telegram} onChange={(e)=>setTelegram(e.target.value)} />
+                                    {userData.email}
+                                </div>
+                                <div className="userProfileInput_field">
+                                    {userData.telegram}
                                 </div>
                             </div>
                         </div>
                         <label htmlFor="skills" className="userProfileH2 userProfileLabel">Навыки</label>
-                        <textarea placeholder="Расскажите нам, какими навыками обладаете?" className="userProfileText_area" id="skills" value={skills} onChange={(e)=>setSkills(e.target.value)}></textarea>
+                        <textarea className="userProfileText_area" id="skills" value={userData.skills} readOnly></textarea>
                         
                         {/* <label htmlFor="portfolio" className="userProfileH2 userProfileLabel">Портфолио</label>
                         <div className="userProfileInput_field"><input type="text" placeholder="Введите ссылку на портфолио..." id="portfolio" required /></div>
                         
                         <label htmlFor="information" className="userProfileH2 userProfileLabel">О себе</label>
-                        <textarea placeholder="Расскажите что-нибудь о себе" className="userProfileText_area" id="information"></textarea> */}
-                        <input type="submit" value="Сохранить" className="userProfileBtn" />
+                        <textarea placeholder="Расскажите что-нибудь о себе" className="userProfileText_area" id="information"></textarea> 
+                        <input type="submit" value="Сохранить" className="userProfileBtn" /> */}
                     </div>
                 </form>
             </div>
+        </div>
         </div>
     )
 }

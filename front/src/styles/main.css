@@ -4,7 +4,7 @@
   box-sizing: border-box;
   font-family: 'Ubuntu', sans-serif;
 }
-.header {
+.main_header {
   display: flex;
   justify-content: space-between;
   background-color: #fff;
@@ -13,14 +13,14 @@
   height: 12vh;
 }
 
-.header__section {
+.main_header__section {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 4vw 0 3vw;
 }
 
-.header__item {
+.main_header__item {
   padding: 6px 30px;
   font-weight: 400;
   font-size: 16px;
@@ -28,31 +28,31 @@
   border-radius: 10px;
 }
 
-.no-fill {
+.main_no-fill {
   border: 2px solid #5D13E7;
   background-color: #fff;
   color: #5D13E7;
 }
 
-.fill {
+.main_fill {
   background-color: #5D13E7;
   color: #fff;
   border: 2px solid #5D13E7;
 }
 
-.header-button {
+.main_header-button {
   cursor: pointer;
 }
 
-.wrapper {
+.main_wrapper {
   background-color: #f0f0f00c;
   padding: 4vh;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-column-gap: 4vw;
+  grid-template-columns: 1.8fr 1.2fr;
+  grid-column-gap: 3.5vw;
 }
 
-.image {
+.main_image {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,13 +62,13 @@
   height: 77vh;
 }
 
-.text {
+.main_text {
   display: grid;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: 1.9fr 1.1fr;
   grid-row-gap: 3vh;
 }
 
-.information {
+.main_information {
   display: grid;
   grid-template-rows: 1fr 1fr;
   background-color: #5D13E7;
@@ -76,7 +76,7 @@
   border-radius: 30px;
 }
 
-.h1 {
+.main_h1 {
   display: flex;
   align-items: center;
   padding: 5vh 4vw 0 4vw;
@@ -85,7 +85,7 @@
   font-size: 40px;
 }
 
-.h3 {
+.main_h3 {
   display: flex;
   align-items: center;
   padding: 0 4vw;
@@ -94,25 +94,27 @@
   font-size: 24px;
 }
 
-.carousel-name {
+.main_carousel-name {
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   color: #000;
-  padding-left: 4vw;
-  padding-top: 1.5vh;
+  /* padding-left: 4vw; */
+  padding-bottom: 1.5vh;
 }
 
-.partners {
+.main_partners {
   background-color: #F6F6F6;
   border-radius: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  /* row-gap: 30px; */
+  padding: 15px;
 }
 
-.image img {
+.main_image img {
   width: 75%;
   height: 89%;
 }
