@@ -13,24 +13,34 @@ const CreateUserProfile = ({accessToken, email, setUserData}) => {
     const [name, setName] = useState('')
     const [telegram, setTelegram] = useState('')
     const [skills, setSkills] = useState('')
+    const [file, setFile] = useState()
 
     const navigate = useNavigate()
+
+
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0])
+        console.log(e.target.files[0]);
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         
         const headers = {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
             'Authorization': accessToken
         }
 
         try {
-            await axios.post(`http://localhost:5000/api/registration/student/`, {
-                email,
-                'Name': name,
-                'Telegram': telegram,
-                'Skills': skills
-            }, {headers: headers}).then(res => {
+            const data = new FormData();
+            data.append("email", email)
+            data.append("Name", name)
+            data.append("Telegram", telegram)
+            data.append("Skills", skills)
+            data.append("Avatar", file)
+            data.append("filename", file.name)
+
+            await axios.post(`http://localhost:5000/api/registration/student/`, data, {headers: headers}).then(res => {
                 console.log(res);
                 setUserData({
                     email: res.data.email,
@@ -78,9 +88,9 @@ const CreateUserProfile = ({accessToken, email, setUserData}) => {
                         <div className="userProfileInput_wrapper">
                             <div className="userProfileInput_image">
                                 <label htmlFor="upload-btn" className='userProfileLabel'>
-                                    <img src={upload} alt="Загрузите изображение профиля" className="userProfileUpload_image" />
+                                    <img src={file ? URL.createObjectURL(file) : upload} alt="Загрузите изображение профиля" className="userProfileUpload_image" />
                                 </label>
-                                <input type="file" id="upload-btn" style={{"display": "none"}} />
+                                <input type="file" id="upload-btn" style={{"display": "none"}} onChange={handleFileChange} />
                             </div>
                             <div className="userProfileText_input">
                                 <div className="userProfileInput_field">

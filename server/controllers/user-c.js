@@ -6,7 +6,7 @@ const User =require ('../models/User')
 const path = require('path')
 const {dirname} = require('path')
 const {fileUrlToPath} = require('url')
-const Multer = require('multer')
+const Multer = require('multer');
 
 class UserController {
     async registration(req,res) {
@@ -29,8 +29,9 @@ class UserController {
     async registrationStudent(req,res) {
         try {
             const { Name, Telegram, Skills } = req.body;
+            //console.log(req.body);
             const studentUser = new student({ Name, Telegram, Skills, createdBy: req.user ,password: req.password, email: req.email,  isActivated: req.isActivated });
-            const fileName = req.file.filename;
+            const fileName = req.body.filename;
             const imagePath = path.join('uploads', fileName);
             studentUser.Avatar = imagePath;
 
