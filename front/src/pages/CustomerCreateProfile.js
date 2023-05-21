@@ -16,8 +16,19 @@ const CustomerCreateProfile = ({accessToken, email, setUserData}) => {
     const [telegram, setTelegram] = useState('')
     const [companyName, setCompanyName] = useState('')
     const [webSiteLink, setWebSiteLink] = useState('')
+    const [companyLogo, setCompanyLogo] = useState()
+    const [avatar, setAvatar] = useState()
 
     const navigate = useNavigate()
+
+    const handleAvatarChange = (e) => {
+        setAvatar(e.target.files[0])
+        console.log('Avatar', e.target.files[0]);
+    }
+    const handleCompanyLogoChange = (e) => {
+        setCompanyLogo(e.target.files[0])
+        console.log('Compapny logo', e.target.files[0]);
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -28,20 +39,27 @@ const CustomerCreateProfile = ({accessToken, email, setUserData}) => {
         }
 
         try {
-            await axios.post(`http://localhost:5000/api/registration/employer/`, {
-                email,
-                'NameCompany': companyName,
-                'Website': webSiteLink,
-                'Name': name,
-                'Telegram': telegram
-            }, {headers: headers}).then(res => {
+            const data = new FormData();
+            data.append("email", email)
+            data.append("Name", name)
+            data.append("Telegram", telegram)
+            data.append("NameCompany", companyName)
+            data.append("Website", webSiteLink)
+            data.append("Avatar", avatar)
+            data.append("avatarFileName", avatar.name)
+            data.append("CompanyLogo", companyLogo)
+            data.append("logoFileName", companyLogo.name)
+
+            await axios.post(`http://localhost:5000/api/registration/employer/`, data, {headers: headers}).then(res => {
                 console.log(res);
                 setUserData({
                     email: res.data.email,
                     name: res.data.Name,
                     telegram: res.data.Telegram,
                     companyName: res.data.NameCompany,
-                    website: res.data.Website
+                    website: res.data.Website,
+                    companyLogo: res.data.CompanyLogo,
+                    personalLogo: res.data.Avatar
                 })
                 navigate("/")
             })
@@ -72,9 +90,9 @@ const CustomerCreateProfile = ({accessToken, email, setUserData}) => {
                 <div className="customer_company-wrapper">
                 <div className="customer_company-image">
                     <label htmlFor="upload-btn">
-                        <img src={upload} alt="Загрузите изображение профиля" className="customer_upload-image" style={{ maxWidth: "100%", cursor: "pointer" }} />
+                        <img src={companyLogo ? URL.createObjectURL(companyLogo) : upload} alt="Загрузите изображение профиля" className="customer_upload-image" style={{ maxWidth: "100%", cursor: "pointer" }} />
                     </label>
-                    <input type="file" id="upload-btn" style={{ display: "none" }} />
+                    <input type="file" id="upload-btn" style={{ display: "none" }} onChange={handleCompanyLogoChange} />
                 </div>
                 <div className="customer_text-input">
                     <div className="customer_input-field">
@@ -89,10 +107,10 @@ const CustomerCreateProfile = ({accessToken, email, setUserData}) => {
                     <div className="customer_input-fields">
                     <div className="customer_input-wrapper">
                         <div className="customer_input-image">
-                            <label htmlFor="upload-btn">
-                                <img src={upload} alt="Загрузите изображение профиля" className="customer_upload-image" style={{ cursor: "pointer" }} />
+                            <label htmlFor="upload-btn1">
+                                <img src={avatar ? URL.createObjectURL(avatar) : upload} alt="Загрузите изображение профиля" className="customer_upload-image" style={{ cursor: "pointer" }} />
                             </label>
-                            <input type="file" id="upload-btn" style={{ display: "none" }} />
+                            <input type="file" id="upload-btn1" style={{ display: "none" }} onChange={handleAvatarChange} />
                         </div>
                         <div className="customer_text-input">
                         <div className="customer_input-field">

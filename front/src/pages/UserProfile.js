@@ -13,7 +13,7 @@ const UserProfile = ({setShowProfile, userData}) => {
     // const [name, setName] = useState('')
     // const [telegram, setTelegram] = useState('')
     // const [skills, setSkills] = useState('')
-
+    console.log(userData);
     // const navigate = useNavigate()
 
     // const handleSubmit = async (e) => {

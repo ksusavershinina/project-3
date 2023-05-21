@@ -95,8 +95,8 @@ const Registration = (props) => {
                             telegram: res.data.user.employer.Telegram,
                             companyName: res.data.user.employer.NameCompany,
                             website: res.data.user.employer.Website,
-                            companyLogo: '',
-                            personalLogo: ''
+                            companyLogo: res.data.user.employer.CompanyLogo,
+                            personalLogo: res.data.user.employer.Avatar
                         })
                     }
                     props.setIsSignedIn(true)

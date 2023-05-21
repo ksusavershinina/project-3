@@ -30,7 +30,7 @@ class UserController {
         try {
             const { Name, Telegram, Skills } = req.body;
             const studentUser = new student({ Name, Telegram, Skills, createdBy: req.user ,password: req.password, email: req.email,  isActivated: req.isActivated });
-            const fileName = req.file.filename;
+            const fileName = req.body.filename;
             const imagePath = path.join('uploads', fileName);
             studentUser.Avatar = imagePath;
 
@@ -52,9 +52,12 @@ class UserController {
         try {
             const { NameCompany,Website, Name,Telegram } = req.body;
             const EmployerUser = new Employer({ NameCompany,Website, Name,Telegram, createdBy: req.user,email: req.email, password: req.password, isActivated: req.isActivated   });
-            const fileName = req.file.filename;
-            const imagePath = path.join('uploads', fileName);
+            const fileName1 = req.body.avatarFileName;
+            const imagePath = path.join('uploads', fileName1);
+            const fileName2 = req.body.logoFileName;
+            const imagePath1 = path.join('uploads', fileName2);
             EmployerUser.Avatar = imagePath;
+            EmployerUser.CompanyLogo = imagePath1
 
             await EmployerUser.save();
 

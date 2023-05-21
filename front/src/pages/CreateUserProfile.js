@@ -48,7 +48,9 @@ const CreateUserProfile = ({accessToken, email, setUserData}) => {
                     telegram: res.data.Telegram,
                     skills: res.data.Skills,
                     companyName: '',
-                    website: ''
+                    website: '',
+                    companyLogo: '',
+                    personalLogo: res.data.Avatar
                 })
                 navigate("/")
             })
