@@ -2,6 +2,7 @@ const Post = require('../models/Project');
 
 class ProjectC {
     async create(req, res) {
+        console.log(req);
         try {
             const { nameProject, description,requirements } = req.body;
             const Project = await Post.findOne({nameProject})

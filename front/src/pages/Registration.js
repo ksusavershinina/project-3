@@ -84,7 +84,8 @@ const Registration = (props) => {
                             companyName: '',
                             website: '',
                             companyLogo: '',
-                            personalLogo: res.data.user.student.Avatar
+                            personalLogo: res.data.user.student.Avatar,
+                            accessToken: res.data.accessToken
                         })
                         console.log(res.data.user.student.Avatar);
                     }
@@ -96,7 +97,8 @@ const Registration = (props) => {
                             companyName: res.data.user.employer.NameCompany,
                             website: res.data.user.employer.Website,
                             companyLogo: res.data.user.employer.CompanyLogo,
-                            personalLogo: res.data.user.employer.Avatar
+                            personalLogo: res.data.user.employer.Avatar,
+                            accessToken: res.data.accessToken
                         })
                     }
                     props.setIsSignedIn(true)

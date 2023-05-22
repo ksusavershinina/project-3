@@ -1,0 +1,202 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* html {
+  font-size: 100%;
+} */
+
+.project_background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(246, 246, 246, 0.8);
+}
+
+.project_container {
+  width: 91.7vw;
+  height: 76.7vh;
+  border-radius: 40px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 6.9vh 4.2vw;
+}
+
+.project_header-section{
+  margin-bottom: 3.4vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project_header{
+  display: flex;
+}
+
+.project_page-name {
+  display: flex;
+  align-items: center;
+  margin-right: 10vw;
+}
+
+.project_h1{
+  line-height: 28px;
+  font-weight: 500;
+  font-size: calc(20px + 20*(100vw/1440));
+  color: #000;
+}
+
+.project_escape-img {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.project_img {
+  width: 50px;
+  height: 50px;
+}
+
+
+.project_create-project{
+  overflow-y: auto;
+}
+
+.project_text-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project_input-fields {
+  display: flex;
+  flex-direction: column;
+  column-gap: 3.4vh;
+  
+}
+
+.project_input-field {
+  width: 38.542vw;
+  height: 7vh;
+  background: #F6F6F6;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  display: flex;
+}
+
+.project_input-field input {
+  flex: 5;
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-left: 15px;
+  font-size: calc(24px + 2.5 * (100vw / 1440));
+  font-weight: 400;
+  color: #000;
+}
+
+.project_text-area {
+  display: block;
+  width: 77.083vw;
+  height: 36vh;
+  background-color: #F6F6F6;
+  margin-bottom: 30px;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: calc(24px + 2.5 * (100vw / 1440));
+  border: none;
+  resize: none;
+  overflow-y: auto;
+}
+
+.project_text-area:focus {
+  outline: none !important;
+}
+
+.project_btn {
+  width: 180px;
+  height: 60px;
+  border: none;
+  border-radius: 15px;
+  position: relative;
+  background: #5D13E7;
+  color: #fff;
+  font-weight: 400;
+  font-size: calc(24px + 2.5 * (100vw / 1440));
+}
+
+::-webkit-scrollbar{
+  width: 0;
+}
+
+@media (max-width:1024px){
+  .project_img{
+    width: 40px;
+    height: 40px;
+  }
+  .project_escape-img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width:768px){
+  .project_escape-img {
+    width: 30px;
+    height: 30px;
+  }
+  .project_img{
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width:426px){
+  .project_container{
+    padding-top:30px;
+    padding-bottom:30px;
+    padding-right:30px;
+    padding-left:30px;
+  }
+
+  .project_header-section{
+    align-items: center;
+  }
+
+  .project_create-project{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project_escape-img {
+    width: 20px;
+    height: 20px;
+  }
+  .project_img{
+    width: 20px;
+    height: 20px;
+  }
+
+  .project_btn{
+    width: 180px;
+    padding: 15px;
+  }
+
+  .project_input-field{
+    width: 77.083vw;
+  }
+}
+
+
+

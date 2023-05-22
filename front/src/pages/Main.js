@@ -17,6 +17,7 @@ import instacart from '../images/slider/instacart.svg';
 import Microsoft from '../images/slider/Microsoft.svg';
 import nike from '../images/slider/nike.svg';
 import uber from '../images/slider/uber.svg';
+import CreateProject from './CreateProject';
 
 const Main = ({isSignedIn, userData}) => {
 
@@ -32,12 +33,16 @@ const Main = ({isSignedIn, userData}) => {
     ];
 
     const [showProfile, setShowProfile] = useState(false)
+    const [createProject, setCreateProject] = useState(false)
 
     if (showProfile && userData.companyName === '') {
         return <UserProfile setShowProfile={setShowProfile} userData={userData} />
     }
     else if (showProfile && userData.companyName !== '') {
         return <CustomerProfile setShowProfile={setShowProfile} userData={userData} />
+    }
+    else if (createProject) {
+        return <CreateProject accessToken={userData.accessToken} setCreateProject={setCreateProject} />
     }
     else {
     return (
@@ -51,6 +56,7 @@ const Main = ({isSignedIn, userData}) => {
                     </Link> 
                 </div>
                 <div className="main_header__section">
+                    {userData.companyName !== '' ? <button onClick={()=>setCreateProject(true)} className="main_header__item main_fill" style={{cursor: 'pointer', marginRight: '20px'}}>Создать проект</button> : <></>}
                     {isSignedIn ? <SignedInButton setShowProfile={setShowProfile} /> : <SignInUpButtons />}
                 </div>
             </div>

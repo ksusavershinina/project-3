@@ -50,7 +50,8 @@ const CreateUserProfile = ({accessToken, email, setUserData}) => {
                     companyName: '',
                     website: '',
                     companyLogo: '',
-                    personalLogo: res.data.Avatar
+                    personalLogo: res.data.Avatar,
+                    accessToken: accessToken
                 })
                 navigate("/")
             })

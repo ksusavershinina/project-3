@@ -53,11 +53,11 @@ class UserController {
         try {
             const { NameCompany,Website, Name,Telegram } = req.body;
             const EmployerUser = new Employer({ NameCompany,Website, Name,Telegram, createdBy: req.user,email: req.email, password: req.password, isActivated: req.isActivated   });
-            const avatarFileName = req.files['Avatar'][0].filename;
+            const avatarFileName = req.body.avatarFileName;
             const avatarImagePath = path.join('uploads', avatarFileName);
             EmployerUser.Avatar = avatarImagePath;
 
-            const companyLogoFileName = req.files['CompanyLogo'][0].filename;
+            const companyLogoFileName = req.body.logoFileName;
             const companyLogoImagePath = path.join('uploads', companyLogoFileName);
             EmployerUser.CompanyLogo = companyLogoImagePath;
 

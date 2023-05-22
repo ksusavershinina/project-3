@@ -14,7 +14,8 @@ const App = () => {
     companyName: '',
     website: '',
     companyLogo: '',
-    personalLogo: ''
+    personalLogo: '',
+    accessToken: ''
   })
 
   return (

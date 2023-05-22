@@ -34,7 +34,7 @@ const CustomerCreateProfile = ({accessToken, email, setUserData}) => {
         e.preventDefault()
         
         const headers = {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
             'Authorization': accessToken
         }
 
@@ -59,7 +59,8 @@ const CustomerCreateProfile = ({accessToken, email, setUserData}) => {
                     companyName: res.data.NameCompany,
                     website: res.data.Website,
                     companyLogo: res.data.CompanyLogo,
-                    personalLogo: res.data.Avatar
+                    personalLogo: res.data.Avatar,
+                    accessToken: accessToken
                 })
                 navigate("/")
             })
