@@ -15,21 +15,21 @@ const Employer = new Schema({
     },
     NameCompany: {
         type: String,
-        required: true,
+        //required: true,
 
     },
     Website: {
         type: String,
-        required: true,
+        //required: true,
         unique: true
     },
     Name: {
         type: String,
-        required: true,
+        //required: true,
     },
     Telegram: {
         type: String,
-        required: true
+        //required: true
     },
     Avatar: {
         type: String

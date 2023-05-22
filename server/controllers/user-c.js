@@ -3,10 +3,10 @@ const {validationResult} = require("express-validator");
 const student = require('../models/StudentModel')
 const Employer = require('../models/EmployerModel')
 const User =require ('../models/User')
-const path = require('path')
 const {dirname} = require('path')
 const {fileUrlToPath} = require('url')
 const Multer = require('multer')
+const path = require('path');
 
 class UserController {
     async registration(req,res) {
@@ -26,6 +26,7 @@ class UserController {
             res.json({message:"пиздец в реге"})
         }
     }
+
     async registrationStudent(req,res) {
         try {
             const { Name, Telegram, Skills } = req.body;
@@ -52,12 +53,13 @@ class UserController {
         try {
             const { NameCompany,Website, Name,Telegram } = req.body;
             const EmployerUser = new Employer({ NameCompany,Website, Name,Telegram, createdBy: req.user,email: req.email, password: req.password, isActivated: req.isActivated   });
-            const fileName1 = req.body.avatarFileName;
-            const imagePath = path.join('uploads', fileName1);
-            const fileName2 = req.body.logoFileName;
-            const imagePath1 = path.join('uploads', fileName2);
-            EmployerUser.Avatar = imagePath;
-            EmployerUser.CompanyLogo = imagePath1
+            const avatarFileName = req.body.filename;
+            const avatarImagePath = path.join('uploads', avatarFileName);
+            EmployerUser.Avatar = avatarImagePath;
+
+            const companyLogoFileName = req.body.filename;
+            const companyLogoImagePath = path.join('uploads', companyLogoFileName);
+            EmployerUser.CompanyLogo = companyLogoImagePath;
 
             await EmployerUser.save();
 
