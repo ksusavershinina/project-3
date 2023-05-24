@@ -17,6 +17,29 @@ class ProjectC {
             res.status(500).json({ message: "проект не создан" });
         }
     }
+
+    async update (req,res) {
+        try {
+            const projectId = req.params.id;
+            const { nameProject, description,requirements, status,companyName } = req.body;
+            await Post.updateOne (
+                {
+                    _id: projectId,
+                  },
+                  {
+                    nameProject: nameProject,
+                    description: description,
+                    requirements: requirements,
+                    status: status,
+                    companyName: companyName,
+                  },
+                );
+            
+        }
+        catch (e) {
+            res.json({message: "пиздец в редактирование проектаы"})
+        }
+    }
 }
 
 module.exports = new ProjectC();
