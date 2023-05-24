@@ -3,7 +3,8 @@ const userController = require('../controllers/user-c');
 const {check} = require('express-validator')
 const ProjectController = require('../controllers/project-c')
 const checkAuth= require('../middleware/checkAuth')
-const multer = require('multer')
+const multer = require('multer');
+const Project = require('../models/Project');
 
 const router = new Router();
 
@@ -47,5 +48,7 @@ router.post('/upload/avatar', checkAuth, upload.single('Avatar'), (req, res) => 
 router.post('/upload/company-logo', checkAuth, upload.single('CompanyLogo'), (req, res) => {
     res.json({ url: `/api/uploads/${req.file.originalname}` });
 });
+
+router.patch('/project',checkAuth,ProjectController.update)
 
 module.exports = router;

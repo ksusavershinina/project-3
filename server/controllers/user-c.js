@@ -140,6 +140,8 @@ class UserController {
             res.json({message: "пропиздон в myproject"})
         }
     }
+    
+    async
 }
 
 module.exports = new UserController()
