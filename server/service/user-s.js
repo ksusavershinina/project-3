@@ -98,6 +98,11 @@ class UserService {
         const projects = await projectModel.find();
         return projects
     }
+
+    async myProjects(id) {
+        const myProjects = await projectModel.find({ createdBy: id })
+        return myProjects
+    }
 }
 
 module.exports = new UserService()

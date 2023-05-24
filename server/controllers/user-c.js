@@ -126,10 +126,20 @@ class UserController {
             return res.json(projects)
         }
         catch (e) {
-            
+            res.json({message: "не выдаёт проекты ептить :)"})
         }
     }
 
+    async myProjects(req,res) {
+        try {
+            const myProjects = await userService.myProjects(req.user)
+            return res.json(myProjects)
+        }
+
+        catch (e) {
+            res.json({message: "пропиздон в myproject"})
+        }
+    }
 }
 
 module.exports = new UserController()

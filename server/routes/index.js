@@ -30,6 +30,7 @@ router.post('/logout', userController.logout);
 router.get('/activate/:link', userController.activate);
 router.get('/refresh', userController.refresh);
 router.post('/project',checkAuth, ProjectController.create)
+router.get('/myproject',checkAuth,userController.myProjects)
 router.post('/registration/student',checkAuth,upload.single('Avatar'), userController.registrationStudent)
 router.post('/registration/employer', checkAuth,
     upload.fields([
