@@ -25,6 +25,7 @@ router.post('/registration',[
     check('password', "пароль не может состоять из пробелов").matches(/^\S+$/)
 ], userController.registration)
 router.post('/login', userController.login);
+router.get('/posts', userController.projects)
 router.post('/logout', userController.logout);
 router.get('/activate/:link', userController.activate);
 router.get('/refresh', userController.refresh);

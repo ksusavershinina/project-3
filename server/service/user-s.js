@@ -7,6 +7,7 @@ const UserDto = require('../dtos/user-dto')
 const Role = require('../models/Role')
 const Student = require('../models/StudentModel')
 const Employer = require('../models/EmployerModel')
+const projectModel = require('../models/Project')
 
 
 class UserService {
@@ -91,6 +92,11 @@ class UserService {
         }
         user.isActivated = true
         await user.save()
+    }
+
+    async projects() {
+        const projects = await projectModel.find();
+        return projects
     }
 }
 

@@ -119,6 +119,17 @@ class UserController {
         catch (e) {
         }
     }
+    
+    async projects(req,res) {
+        try {
+            const projects = await userService.projects()
+            return res.json(projects)
+        }
+        catch (e) {
+            
+        }
+    }
+
 }
 
 module.exports = new UserController()
