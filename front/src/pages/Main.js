@@ -1,36 +1,18 @@
 import '../styles/main.css';
 import '../styles/fonts.css';
 import levelup from '../images/level_up_purple.svg';
-import mainimg from '../images/main-image.svg';
 import {Link} from 'react-router-dom';
-import ReactCardSlider from '../components/ReactCardSlider';
 import SignInUpButtons from '../components/SignInUpButtons';
 import SignedInButton from '../components/SignedInButton';
 import UserProfile from './UserProfile';
 import CustomerProfile from './CustomerProfile';
+import MainContentNotSigned from '../components/MainContentNotSigned';
+import MainContentSigned from '../components/MainContentSigned';
 import { useState } from 'react';
-
-import google from '../images/slider/google.svg';
-import amazon from '../images/slider/amazon.svg';
-import defence from '../images/slider/defense.svg';
-import instacart from '../images/slider/instacart.svg';
-import Microsoft from '../images/slider/Microsoft.svg';
-import nike from '../images/slider/nike.svg';
-import uber from '../images/slider/uber.svg';
 import CreateProject from './CreateProject';
 
 const Main = ({isSignedIn, userData}) => {
 
-
-    const slides = [
-        { image: google },
-        { image: amazon },
-        { image: defence },
-        { image: instacart },
-        { image: Microsoft },
-        { image: nike },
-        { image: uber },
-    ];
 
     const [showProfile, setShowProfile] = useState(false)
     const [createProject, setCreateProject] = useState(false)
@@ -42,7 +24,7 @@ const Main = ({isSignedIn, userData}) => {
         return <CustomerProfile setShowProfile={setShowProfile} userData={userData} />
     }
     else if (createProject) {
-        return <CreateProject accessToken={userData.accessToken} setCreateProject={setCreateProject} />
+        return <CreateProject companyName={userData.companyName} accessToken={userData.accessToken} setCreateProject={setCreateProject} />
     }
     else {
     return (
@@ -60,27 +42,7 @@ const Main = ({isSignedIn, userData}) => {
                     {isSignedIn ? <SignedInButton setShowProfile={setShowProfile} /> : <SignInUpButtons />}
                 </div>
             </div>
-            <div className="main_wrapper">
-                <div className="main_text">
-                    <div className="main_information">
-                        <p className="main_h1">
-                            Новая платформа для взаимодействия студентов и реальных заказчиков
-                        </p>
-                        <p className="main_h3">
-                            Учавствуйте в проектах, повышайте скиллы и пополняйте своё портфолио
-                        </p>
-                    </div>
-                    <div className="main_partners">
-                        <p className="main_carousel-name">
-                            Наши партнеры:
-                        </p>
-                        <ReactCardSlider slides={slides} />
-                    </div>
-                </div>
-                <div className="main_image">
-                    <img src={mainimg} alt="" />
-                </div>
-            </div>
+            {isSignedIn ? <MainContentSigned /> : <MainContentNotSigned />}
         </>
     );
     }

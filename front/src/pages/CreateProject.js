@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
-const CreateProject = ({accessToken, setCreateProject}) => {
+const CreateProject = ({companyName, accessToken, setCreateProject}) => {
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -26,7 +26,8 @@ const CreateProject = ({accessToken, setCreateProject}) => {
             const data = {
                 "nameProject": name,
                 "description": description,
-                "requirements": requirements
+                "requirements": requirements,
+                "companyName": companyName
             }
             console.log(data);
             await axios.post(`http://localhost:5000/api/project/`, data, {headers: headers}).then(res => {

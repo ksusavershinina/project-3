@@ -1,0 +1,193 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.signedMain_body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.signedMain_container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.signedMain_header {
+  width: 100%;
+  padding: 1% 0;
+  background-color: #5D13E7;
+  display: flex;
+  z-index: 6;
+  justify-content: space-between;
+  box-shadow: 0px 0px 30px rgba(246, 246, 246, 0.4);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 9%;
+}
+
+.signedMain_header__section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 4vw 0 3vw;
+}
+
+.signedMain_logo-img img {
+  height: 6vh;
+  width: 12vw;
+}
+
+.signedMain_profile-img img {
+  height: 5vh;
+  width: 9vw;
+  cursor: pointer;
+}
+
+.signedMain_main-panel {
+  width: 100%;
+  height: 91%;
+  display: flex;
+  position: relative;
+}
+
+.signedMain_project-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 78%;
+  height: 91vh;
+  padding: 2vh 3vw 3vh 1vw;
+  overflow-y: auto;
+}
+
+.signedMain_side-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  width: 22%;
+  height: 91vh;
+  align-self: first baseline;
+}
+
+.signedMain_page-name {
+  display: flex;
+  align-self: flex-start;
+  font-style: normal;
+  font-weight: 500;
+  font-size: calc(16px + 8 * (100vw / 1440));
+  color: #5D13E7;
+  margin: 0 0 20px 0;
+}
+
+.signedMain_panel-contain {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  position: absolute;
+  top: 3vh;
+}
+
+.signedMain_check-box {
+  position: relative;
+  margin-top: 2%;
+}
+
+.signedMain_check-box__label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Ubuntu';
+  font-size: calc(16px + 8 * (100vw / 1440));
+  font-weight: 400;
+  color: #5D13E759;
+  margin: 1vh 0;
+  cursor: pointer;
+}
+
+.signedMain_check-box__checkbox {
+  position: relative;
+  width: 1.7vw;
+  height: 1.7vw;
+  flex: 0 0 auto;
+  margin: 0 13px 0 0;
+}
+
+.signedMain_checkbox-default {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+.signedMain_checkbox-default:checked + .signedMain_checked {
+  background: url("../images/icons/check.svg") 50% 50% no-repeat #5D13E7;
+  background-size: 70%;
+}
+
+.signedMain_checked {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid #5D13E7;
+  border-radius: 5px;
+}
+
+@media (max-width:916px) {
+  .signedMain_side-panel {
+    width: 45%;
+  }
+  .signedMain_project-list {
+    justify-content: center;
+  }
+}
+
+@media (max-width:635px) {
+  .signedMain_header {
+    height: 8vh;
+  }
+  .signedMain_logo-img img {
+    height: 7vh;
+    width: 19vw;
+  }
+  .signedMain_profile-img img {
+    height: 4vh;
+    width: 8vw;
+  }
+  .signedMain_side-panel {
+    width: 45%;
+  }
+  .signedMain_check-customer__label {
+    font-size: 14px;
+  }
+  .signedMain_page-name {
+    font-size: 16px;
+  }
+  .signedMain_project-list {
+    grid-template-columns: 1fr;
+  }
+  .signedMain_card {
+    align-self: center;
+    justify-self: center;
+  }
+}
+::-webkit-scrollbar{
+  width: 0;
+}

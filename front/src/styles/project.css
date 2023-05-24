@@ -133,6 +133,7 @@
   color: #fff;
   font-weight: 400;
   font-size: calc(24px + 2.5 * (100vw / 1440));
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar{
