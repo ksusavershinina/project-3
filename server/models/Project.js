@@ -5,7 +5,7 @@ const projectSchema = new Schema({
     companyName: {type: String },
     description: { type: String },
     requirements: {type: String},
-    status: {type: String},
+    status: {type: String, default: "todo"},
     createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true }
 });
 
