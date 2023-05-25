@@ -49,6 +49,6 @@ router.post('/upload/company-logo', checkAuth, upload.single('CompanyLogo'), (re
     res.json({ url: `/api/uploads/${req.file.originalname}` });
 });
 
-router.patch('/project',checkAuth,ProjectController.update)
+router.patch('/project/:id', checkAuth, ProjectController.update)
 
 module.exports = router;

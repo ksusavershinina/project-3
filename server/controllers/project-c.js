@@ -20,25 +20,29 @@ class ProjectC {
 
     async update (req,res) {
         try {
-            const projectId = req.params.id;
-            const { nameProject, description,requirements, status,companyName } = req.body;
-            await Post.updateOne (
-                {
-                    _id: projectId,
-                  },
-                  {
-                    nameProject: nameProject,
-                    description: description,
-                    requirements: requirements,
-                    status: status,
-                    companyName: companyName,
-                  },
-                );
-            
-        }
-        catch (e) {
-            res.json({message: "пиздец в редактирование проектаы"})
-        }
+            const postId = req.params.id;
+        
+            await Post.updateOne(
+              {
+                _id: postId,
+              },
+              {
+                nameProject: req.body.nameProject,
+                companyName: req.body.companyName,
+                description: req.body.description,
+                requirements: req.body.requirements
+              },
+            );
+        
+            res.json({
+              success: true,
+            });
+          } catch (err) {
+            console.log(err);
+            res.status(500).json({
+              message: 'Не удалось обновить статью',
+            });
+          }
     }
 }
 
