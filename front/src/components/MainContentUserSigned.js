@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import ProjectCard from './ProjectCard'
 
-const MainContentSigned = () => {
+const MainContentUserSigned = () => {
 
     const [all, setAll] = useState(true)
     const [inProcess, setInProcess] = useState(false)
@@ -109,4 +109,4 @@ const MainContentSigned = () => {
     )
 }
 
-export default MainContentSigned;
+export default MainContentUserSigned;

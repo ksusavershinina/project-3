@@ -7,7 +7,8 @@ import SignedInButton from '../components/SignedInButton';
 import UserProfile from './UserProfile';
 import CustomerProfile from './CustomerProfile';
 import MainContentNotSigned from '../components/MainContentNotSigned';
-import MainContentSigned from '../components/MainContentSigned';
+import MainContentUserSigned from '../components/MainContentUserSigned';
+import MainContentCustomerSigned from '../components/MainContentCustomerSigned';
 import { useState } from 'react';
 import CreateProject from './CreateProject';
 
@@ -42,7 +43,7 @@ const Main = ({isSignedIn, userData}) => {
                     {isSignedIn ? <SignedInButton setShowProfile={setShowProfile} /> : <SignInUpButtons />}
                 </div>
             </div>
-            {isSignedIn ? <MainContentSigned /> : <MainContentNotSigned />}
+            {isSignedIn ? (userData.companyName !== '' ? <MainContentCustomerSigned accessToken={userData.accessToken} /> : <MainContentUserSigned />) : <MainContentNotSigned />}
         </>
     );
     }
