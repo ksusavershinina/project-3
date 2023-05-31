@@ -16,7 +16,8 @@ const MainContentCustomerSigned = ({accessToken}) => {
         projectName: '',
         projectDescription: '',
         projectRequirements: '',
-        projectId: ''
+        projectId: '',
+        projectStatus: ''
     })
 
     useEffect(() => {
@@ -42,7 +43,8 @@ const MainContentCustomerSigned = ({accessToken}) => {
         return <EditProject projectName={projectInfo.projectName} 
                             projectDescription={projectInfo.projectDescription} 
                             projectRequirements={projectInfo.projectRequirements}
-                            projectId={projectInfo.projectId} 
+                            projectId={projectInfo.projectId}
+                            projectStatus={projectInfo.projectStatus} 
                             setEditProject={setEditProject}
                             accessToken={accessToken} />
     }
@@ -60,7 +62,8 @@ const MainContentCustomerSigned = ({accessToken}) => {
                                                                    id={project._id}
                                                                    name={project.nameProject} 
                                                                    description={project.description} 
-                                                                   requirements={project.requirements} 
+                                                                   requirements={project.requirements}
+                                                                   status={project.status} 
                                                                    setEditProject={setEditProject} 
                                                                    setProjectInfo={setProjectInfo} />)}
                     </div>

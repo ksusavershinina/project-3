@@ -30,7 +30,8 @@ class ProjectC {
                 nameProject: req.body.nameProject,
                 //companyName: req.body.companyName,
                 description: req.body.description,
-                requirements: req.body.requirements
+                requirements: req.body.requirements,
+                status: req.body.status
               },
             );
         

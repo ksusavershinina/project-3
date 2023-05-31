@@ -1,12 +1,14 @@
-import upload from '../images/upload-img.svg'
-import inProgress from '../images/in-progress-project-status.svg'
+import upload from '../images/upload-img.svg';
+import inProgress from '../images/in-progress-project-status.svg';
+import completed from '../images/complete-project-status.svg';
+import todo from '../images/new-project-status.svg';
 
 import { useState } from 'react'
 
 import '../styles/project-card.css'
 import '../styles/fonts.css'
 
-const ProjectCard = ({projectName, companyName, description, requirements}) => {
+const ProjectCard = ({projectName, companyName, description, requirements, status}) => {
 
   const [expand, setExpand] = useState(false)
 
@@ -24,7 +26,7 @@ const ProjectCard = ({projectName, companyName, description, requirements}) => {
             {companyName}
           </h3>
           <div className="projectCard_status-image">
-            <img src={inProgress} alt="" />
+            <img src={status==='todo' ? todo : (status==='inProgress' ? inProgress : completed)} alt="" />
           </div>
         </div>
         <div className="projectCard_card-text" id="more" style={{height: expand ? '47%' : '0'}}>

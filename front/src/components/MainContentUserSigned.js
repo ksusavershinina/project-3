@@ -103,7 +103,13 @@ const MainContentUserSigned = () => {
                 </div>
             </div>
             <div className="signedMain_project-list">
-                {projects.map(project => <ProjectCard key={project.nameProject} projectName={project.nameProject} companyName={project.companyName} description={project.description} requirements={project.requirements} />)}
+                {projects.filter(project => (inProcess && project.status==='inProgress') || all || (completed && project.status==='completed'))
+                         .map(project => <ProjectCard key={project.nameProject} 
+                                                      projectName={project.nameProject} 
+                                                      companyName={project.companyName} 
+                                                      description={project.description} 
+                                                      requirements={project.requirements}
+                                                      status={project.status} />)}
             </div>
         </main>
     )
