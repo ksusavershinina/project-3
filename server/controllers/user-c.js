@@ -141,7 +141,17 @@ class UserController {
         }
     }
     
-    async
+    async getOne(req, res) {
+        try {
+            const getOne = await userService.getOne(req.params.id)
+            return res.json(getOne)
+        }
+
+        catch (e) {
+            res.json({message: "пропиздон в getOne"})
+        }
+    }
+    
 }
 
 module.exports = new UserController()

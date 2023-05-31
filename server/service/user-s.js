@@ -8,6 +8,7 @@ const Role = require('../models/Role')
 const Student = require('../models/StudentModel')
 const Employer = require('../models/EmployerModel')
 const projectModel = require('../models/Project')
+const EmployerModel = require('../models/EmployerModel')
 
 
 class UserService {
@@ -92,6 +93,11 @@ class UserService {
         }
         user.isActivated = true
         await user.save()
+    }
+
+    async getOne(id) {
+        const getOne = await EmployerModel.findOne({ createdBy: id })
+        return getOne
     }
 
     async projects() {

@@ -51,4 +51,6 @@ router.post('/upload/company-logo', checkAuth, upload.single('CompanyLogo'), (re
 
 router.patch('/project/:id', checkAuth, ProjectController.update)
 
+router.get('/getOne/:id', checkAuth, userController.getOne)
+
 module.exports = router;
