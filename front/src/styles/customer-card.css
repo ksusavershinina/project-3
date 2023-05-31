@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.customerCard_background {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(246, 246, 246, 0.8);
+}
+
+.customerCard_container {
+    width: 50vw;
+    height: 34.325vh;
+    border-radius: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 3.4vh 2.1vw 6.865vh 4.2vw ;
+}
+
+.customerCard_header-section{
+    margin-bottom: 3.4vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.customerCard_page-name {
+    display: flex;
+    align-items: center;
+    margin-right: 10vw;
+}
+
+.customerCard_h1{
+    line-height: 28px;
+    font-weight: 500;
+    font-size: calc(16px + 8 * (100vw / 1440));
+    color: #000;
+}
+
+.customerCard_escape-img {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+.customerCard_img {
+  width: 30px;
+  height: 30px;
+}
+
+.customerCard_content-section{
+    display: flex;
+    flex-direction: row;
+    column-gap: 2.1vw;
+    align-items: center;
+}
+
+.customerCard_profile-image{
+    width: 10.417vw;
+    height: 17.162vh;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f6f6f6;
+}
+
+.customerCard_text-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 3.4vh;
+    font-weight: 400;
+    font-size: calc(14px + 6 * (100vw / 1440));
+}
+
+.customerCard_name{
+    font-weight: 500;
+}
+
+@media (max-width:1024px) {
+  .customerCard_container{
+    padding: 3.4vh 2.1vw 6.865vh 4.2vw ;
+  }
+
+  .customerCard_escape-img {
+    width: 28px;
+    height: 28px;
+  }
+  .customerCard_img{
+    width: 28px;
+    height: 28px;
+  }
+  
+  .customerCard_profile-image{
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width:768px){
+  .customerCard_escape-img {
+    width: 28px;
+    height: 28px;
+  }
+  .customerCard_img{
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width:700px){
+  .customerCard_container{
+    width: 240px;
+    align-items: center;
+  }
+  .customerCard_profile-image{
+    display: none;
+  }
+  .customerCard_escape-img {
+    width: 25px;
+    height: 25px;
+  }
+  .customerCard_img{
+    width: 25px;
+    height: 25px;
+  }
+}
+
+
+
+
+
+
+
+

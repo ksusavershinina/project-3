@@ -43,7 +43,7 @@ const Main = ({isSignedIn, userData}) => {
                     {isSignedIn ? <SignedInButton setShowProfile={setShowProfile} /> : <SignInUpButtons />}
                 </div>
             </div>
-            {isSignedIn ? (userData.companyName !== '' ? <MainContentCustomerSigned accessToken={userData.accessToken} /> : <MainContentUserSigned />) : <MainContentNotSigned />}
+            {isSignedIn ? (userData.companyName !== '' ? <MainContentCustomerSigned accessToken={userData.accessToken} /> : <MainContentUserSigned accessToken={userData.accessToken} />) : <MainContentNotSigned />}
         </>
     );
     }

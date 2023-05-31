@@ -4,13 +4,33 @@ import completed from '../images/complete-project-status.svg';
 import todo from '../images/new-project-status.svg';
 
 import { useState } from 'react'
+import axios from 'axios';
 
 import '../styles/project-card.css'
 import '../styles/fonts.css'
 
-const ProjectCard = ({projectName, companyName, description, requirements, status}) => {
+const ProjectCard = ({projectName, companyName, description, requirements, status, createdBy, accessToken, setShowCustomerCard, setCustomerInfo}) => {
 
   const [expand, setExpand] = useState(false)
+
+  const handleAttend = async () => {
+    const headers = {
+      'Authorization': accessToken
+    }
+    try {
+      await axios.get(`http://localhost:5000/api/getOne/${createdBy}`, {headers: headers}).then(res => {
+          setCustomerInfo({
+            email: res.data.email,
+            telegram: res.data.Telegram,
+            profileImageLink: res.data.Avatar
+          })
+      })
+      setShowCustomerCard(true)
+    }
+    catch (e) {
+        console.log(e);
+    }
+  }
 
   return (
     <div>
@@ -37,7 +57,7 @@ const ProjectCard = ({projectName, companyName, description, requirements, statu
           <div className="projectCard_text-wrapper">
             <label htmlFor="skills" className="projectCard_card-label">Навыки</label>
             <p className="projectCard_text-area" id="skills">{requirements}</p>
-            <button className="projectCard_accordion-button">Участвовать</button>
+            <button className="projectCard_accordion-button" onClick={handleAttend}>Участвовать</button>
           </div>
         </div>
         <div className="projectCard_button-wrapper" style={{height: expand ? '10%' : '17%'}}><button onClick={()=>setExpand(!expand)} className="projectCard_accordion-button">Подробнее</button></div>

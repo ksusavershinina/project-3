@@ -5,13 +5,20 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import ProjectCard from './ProjectCard'
+import CustomerCard from './CustomerCard';
 
-const MainContentUserSigned = () => {
+const MainContentUserSigned = ({accessToken}) => {
 
     const [all, setAll] = useState(true)
     const [inProcess, setInProcess] = useState(false)
     const [completed, setCompleted] = useState(false)
     const [projects, setProjects] = useState([])
+    const [showCustomerCard, setShowCustomerCard] = useState(false)
+    const [customerInfo, setCustomerInfo] = useState({
+        email: '',
+        telegram: '',
+        profileImageLink: ''
+    })
 
     const handleAllChange = () => {
         if (!all) {
@@ -65,6 +72,10 @@ const MainContentUserSigned = () => {
         }
     }
 
+    if (showCustomerCard) {
+        return <CustomerCard setShowCustomerCard={setShowCustomerCard} customerInfo={customerInfo} />
+    }
+
     return (
         <main className="signedMain_main-panel">
             <div className="signedMain_side-panel">
@@ -109,7 +120,11 @@ const MainContentUserSigned = () => {
                                                       companyName={project.companyName} 
                                                       description={project.description} 
                                                       requirements={project.requirements}
-                                                      status={project.status} />)}
+                                                      status={project.status}
+                                                      createdBy={project.createdBy}
+                                                      accessToken={accessToken}
+                                                      setShowCustomerCard={setShowCustomerCard}
+                                                      setCustomerInfo={setCustomerInfo} />)}
             </div>
         </main>
     )
