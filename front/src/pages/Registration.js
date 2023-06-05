@@ -74,6 +74,7 @@ const Registration = (props) => {
                 }
                 else {
                     console.log(res);
+                    localStorage.setItem('user', JSON.stringify(res.data))
                     navigate('/')
                     if (res.data.user.student !== undefined) {
                         props.setUserData({

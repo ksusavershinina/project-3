@@ -12,17 +12,19 @@ import MainContentCustomerSigned from '../components/MainContentCustomerSigned';
 import { useState } from 'react';
 import CreateProject from './CreateProject';
 
-const Main = ({isSignedIn, userData}) => {
+const Main = ({isSignedIn, setIsSignedIn, userData}) => {
 
 
     const [showProfile, setShowProfile] = useState(false)
     const [createProject, setCreateProject] = useState(false)
 
+    
+
     if (showProfile && userData.companyName === '') {
-        return <UserProfile setShowProfile={setShowProfile} userData={userData} />
+        return <UserProfile setShowProfile={setShowProfile} userData={userData} setIsSignedIn={setIsSignedIn} />
     }
     else if (showProfile && userData.companyName !== '') {
-        return <CustomerProfile setShowProfile={setShowProfile} userData={userData} />
+        return <CustomerProfile setShowProfile={setShowProfile} userData={userData} setIsSignedIn={setIsSignedIn} />
     }
     else if (createProject) {
         return <CreateProject companyName={userData.companyName} accessToken={userData.accessToken} setCreateProject={setCreateProject} />
@@ -39,7 +41,7 @@ const Main = ({isSignedIn, userData}) => {
                     </Link> 
                 </div>
                 <div className="main_header__section">
-                    {userData.companyName !== '' ? <button onClick={()=>setCreateProject(true)} className="main_header__item main_fill" style={{cursor: 'pointer', marginRight: '20px'}}>Создать проект</button> : <></>}
+                    {isSignedIn && userData.companyName !== '' ? <button onClick={()=>setCreateProject(true)} className="main_header__item main_fill" style={{cursor: 'pointer', marginRight: '20px'}}>Создать проект</button> : <></>}
                     {isSignedIn ? <SignedInButton setShowProfile={setShowProfile} /> : <SignInUpButtons />}
                 </div>
             </div>

@@ -20,6 +20,7 @@ const ProjectCard = ({projectName, companyName, description, requirements, statu
     try {
       await axios.get(`http://localhost:5000/api/getOne/${createdBy}`, {headers: headers}).then(res => {
           setCustomerInfo({
+            name: res.data.Name,
             email: res.data.email,
             telegram: res.data.Telegram,
             profileImageLink: res.data.Avatar

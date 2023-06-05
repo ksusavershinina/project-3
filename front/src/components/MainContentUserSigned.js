@@ -15,6 +15,7 @@ const MainContentUserSigned = ({accessToken}) => {
     const [projects, setProjects] = useState([])
     const [showCustomerCard, setShowCustomerCard] = useState(false)
     const [customerInfo, setCustomerInfo] = useState({
+        name: '',
         email: '',
         telegram: '',
         profileImageLink: ''

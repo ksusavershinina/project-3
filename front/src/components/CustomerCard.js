@@ -19,7 +19,7 @@ const CustomerCard = ({setShowCustomerCard, customerInfo}) => {
                         <img src={`http://localhost:5000/${customerInfo.profileImageLink.replace('uploads\\', '')}`} alt="" className='customerCard_img' />
                     </div>
                     <div className="customerCard_text-container">
-                        <p className="customerCard_name">Аркадий Паровозов</p>
+                        <p className="customerCard_name">{customerInfo.name}</p>
                         <p>Email: {customerInfo.email}</p>
                         <p>Telegram: {customerInfo.telegram}</p>
                     </div>

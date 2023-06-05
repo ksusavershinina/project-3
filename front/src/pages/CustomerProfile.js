@@ -11,7 +11,7 @@ import '../styles/customer.css';
 // import { Link } from 'react-router-dom';
 
 
-const CustomerProfile = ({ setShowProfile, userData }) => {
+const CustomerProfile = ({ setShowProfile, userData, setIsSignedIn }) => {
 
     // const [name, setName] = useState('')
     // const [telegram, setTelegram] = useState('')
@@ -53,6 +53,12 @@ const CustomerProfile = ({ setShowProfile, userData }) => {
     //         console.log(e);
     //     }
     // }
+
+    const handleLogout = () => {
+        localStorage.clear()
+        setIsSignedIn(false)
+        setShowProfile(false)
+    }
 
     return (
         <div className='customer_body'>
@@ -111,6 +117,7 @@ const CustomerProfile = ({ setShowProfile, userData }) => {
                         </div>
                         </div>
                     </div>
+                    <button type='button' className='project_btn' onClick={handleLogout}>Выйти</button>
                     {/* <label htmlFor="skills" className="customer_h2">Навыки</label>
                     <textarea placeholder="Расскажите нам, какими навыками обладаете?" className="customer_text-area" id="skills"></textarea>
                     

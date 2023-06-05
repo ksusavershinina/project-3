@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 
 // import { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 
-const UserProfile = ({setShowProfile, userData}) => {
+const UserProfile = ({setShowProfile, userData, setIsSignedIn}) => {
     // const [name, setName] = useState('')
     // const [telegram, setTelegram] = useState('')
     // const [skills, setSkills] = useState('')
@@ -42,6 +42,14 @@ const UserProfile = ({setShowProfile, userData}) => {
     //         console.log(e);
     //     }
     // }
+
+    const handleLogout = async () => {
+
+        localStorage.clear();
+
+        setIsSignedIn(false)
+        setShowProfile(false)
+    }
 
     return (
         <div className='user_body'>
@@ -87,6 +95,7 @@ const UserProfile = ({setShowProfile, userData}) => {
                         </div>
                         <label htmlFor="skills" className="userProfileH2 userProfileLabel">Навыки</label>
                         <textarea className="userProfileText_area" id="skills" value={userData.skills} readOnly></textarea>
+                        <button type='button' className='project_btn' onClick={handleLogout}>Выйти</button>
                         
                         {/* <label htmlFor="portfolio" className="userProfileH2 userProfileLabel">Портфолио</label>
                         <div className="userProfileInput_field"><input type="text" placeholder="Введите ссылку на портфолио..." id="portfolio" required /></div>
