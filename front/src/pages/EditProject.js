@@ -64,9 +64,23 @@ const EditProject = ({projectName, projectDescription, projectRequirements, proj
                             <textarea placeholder="Требования к исполнителю..." className="project_text-area" id="requirements" value={requirements} onChange={(e)=>setRequirements(e.target.value)}></textarea>
                         </div>
                     </div>
-                    <input type='radio' checked={status==='todo'} onChange={()=>setStatus('todo')} /><p>Новый</p>
+                    <div className="project_choosing">
+                        <div>
+                          <input className="project_radio" type="radio" checked={status==='todo'} onChange={()=>setStatus('todo')} />
+                          <label className="project_status" htmlFor="inProgress">Новый</label>
+                        </div>
+                        <div>
+                          <input className="project_radio" type="radio" checked={status==='inProgress'} onChange={()=>setStatus('inProgress')} />
+                          <label className="project_status" htmlFor="inProgress">В процессе</label>
+                        </div>
+                        <div>
+                          <input className="project_radio" type="radio" checked={status==='completed'} onChange={()=>setStatus('completed')} />
+                          <label className="project_status" htmlFor="completed">Завершен</label>
+                        </div>
+                    </div>
+                    {/* <input type='radio' checked={status==='todo'} onChange={()=>setStatus('todo')} /><p>Новый</p>
                     <input type='radio' checked={status==='inProgress'} onChange={()=>setStatus('inProgress')} /><p>В процессе</p>
-                    <input type='radio' checked={status==='completed'} onChange={()=>setStatus('completed')} /><p>Завершен</p>
+                    <input type='radio' checked={status==='completed'} onChange={()=>setStatus('completed')} /><p>Завершен</p> */}
                     <input type="submit" value="Сохранить" className="project_btn" />
                 </form>
             </div>
