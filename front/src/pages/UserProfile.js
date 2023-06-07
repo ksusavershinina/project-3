@@ -77,7 +77,7 @@ const UserProfile = ({setShowProfile, userData, setIsSignedIn}) => {
                         <div className="userProfileInput_wrapper">
                             <div className="userProfileInput_image">
                                 <label htmlFor="upload-btn" className='userProfileLabel'>
-                                    <img src={`http://localhost:5000/${userData.personalLogo.replace('uploads\\', '')}`} alt="Загрузите изображение профиля" className="userProfileUpload_image" />
+                                    <img src={`https://test1223.onrender.com/${userData.personalLogo.replace('uploads\\', '')}`} alt="Загрузите изображение профиля" className="userProfileUpload_image" />
                                 </label>
                                 {/* <input type="file" id="upload-btn" style={{"display": "none"}} /> */}
                             </div>

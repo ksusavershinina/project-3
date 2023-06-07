@@ -31,7 +31,7 @@ const EditProject = ({projectName, projectDescription, projectRequirements, proj
                 "status": status
             }
             console.log(data);
-            await axios.patch(`http://localhost:5000/api/project/${projectId}`, data, {headers: headers}).then(res => {
+            await axios.patch(`https://test1223.onrender.com/api/project/${projectId}`, data, {headers: headers}).then(res => {
                 console.log(res);
                 setEditProject(false)
             })

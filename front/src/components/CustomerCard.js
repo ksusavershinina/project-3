@@ -16,7 +16,7 @@ const CustomerCard = ({setShowCustomerCard, customerInfo}) => {
                 </div>
                 <div className="customerCard_content-section">
                     <div className="customerCard_profile-image">
-                        <img src={`http://localhost:5000/${customerInfo.profileImageLink.replace('uploads\\', '')}`} alt="" className='customerCard_img' />
+                        <img src={`https://test1223.onrender.com/${customerInfo.profileImageLink.replace('uploads\\', '')}`} alt="" className='customerCard_img' />
                     </div>
                     <div className="customerCard_text-container">
                         <p className="customerCard_name">{customerInfo.name}</p>

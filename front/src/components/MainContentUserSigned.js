@@ -46,7 +46,7 @@ const MainContentUserSigned = ({accessToken}) => {
     useEffect(() => {
         const getProjects = async () => {
             try {
-                await axios.get(`http://localhost:5000/api/posts/`).then(res => {
+                await axios.get(`https://test1223.onrender.com/api/posts/`).then(res => {
                     setProjects(res.data)
                 })
                 //console.log(projects);

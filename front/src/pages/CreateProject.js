@@ -3,7 +3,6 @@ import '../styles/fonts.css';
 import escapePurple from '../images/icons/escape-purple.svg';
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -12,8 +11,6 @@ const CreateProject = ({companyName, accessToken, setCreateProject}) => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [requirements, setRequirements] = useState('')
-
-    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -30,7 +27,7 @@ const CreateProject = ({companyName, accessToken, setCreateProject}) => {
                 "companyName": companyName
             }
             console.log(data);
-            await axios.post(`http://localhost:5000/api/project/`, data, {headers: headers}).then(res => {
+            await axios.post(`https://test1223.onrender.com/api/project/`, data, {headers: headers}).then(res => {
                 console.log(res);
                 setCreateProject(false)
             })
