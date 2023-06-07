@@ -83,7 +83,7 @@ const CustomerProfile = ({ setShowProfile, userData, setIsSignedIn }) => {
                 <div className="customer_company-wrapper">
                 <div className="customer_company-image">
                     <label htmlFor="upload-btn">
-                        <img src={`http://localhost:5000/${userData.companyLogo.replace('uploads\\', '')}`} alt="Загрузите изображение профиля" className="customer_upload-image" style={{ maxWidth: "100%", cursor: "pointer" }} />
+                        <img src={`https://test1223.onrender.com/${userData.companyLogo.replace('uploads\\', '')}`} alt="Загрузите изображение профиля" className="customer_upload-image" style={{ maxWidth: "100%", cursor: "pointer" }} />
                     </label>
                     {/* <input type="file" id="upload-btn" style={{ display: "none" }} /> */}
                 </div>
@@ -101,7 +101,7 @@ const CustomerProfile = ({ setShowProfile, userData, setIsSignedIn }) => {
                     <div className="customer_input-wrapper">
                         <div className="customer_input-image">
                             <label htmlFor="upload-btn">
-                                <img src={`http://localhost:5000/${userData.personalLogo.replace('uploads\\', '')}`} alt="Загрузите изображение профиля" className="customer_upload-image" style={{ cursor: "pointer" }} />
+                                <img src={`https://test1223.onrender.com/${userData.personalLogo.replace('uploads\\', '')}`} alt="Загрузите изображение профиля" className="customer_upload-image" style={{ cursor: "pointer" }} />
                             </label>
                             {/* <input type="file" id="upload-btn" style={{ display: "none" }} /> */}
                         </div>

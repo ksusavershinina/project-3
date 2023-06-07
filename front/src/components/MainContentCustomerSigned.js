@@ -26,10 +26,9 @@ const MainContentCustomerSigned = ({accessToken}) => {
                 'Authorization': accessToken
             }
             try {
-                await axios.get(`http://localhost:5000/api/myProject/`, {headers: headers}).then(res => {
+                await axios.get(`https://test1223.onrender.com/api/myProject/`, {headers: headers}).then(res => {
                     setProjects(res.data)
                 })
-                //console.log(projects);
             }
             catch (e) {
                 console.log(e);

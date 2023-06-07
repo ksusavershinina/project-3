@@ -18,7 +18,7 @@ const ProjectCard = ({projectName, companyName, description, requirements, statu
       'Authorization': accessToken
     }
     try {
-      await axios.get(`http://localhost:5000/api/getOne/${createdBy}`, {headers: headers}).then(res => {
+      await axios.get(`https://test1223.onrender.com/api/getOne/${createdBy}`, {headers: headers}).then(res => {
           setCustomerInfo({
             name: res.data.Name,
             email: res.data.email,

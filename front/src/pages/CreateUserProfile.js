@@ -40,7 +40,7 @@ const CreateUserProfile = ({accessToken, email, setUserData}) => {
             data.append("Avatar", file)
             data.append("filename", file.name)
 
-            await axios.post(`http://localhost:5000/api/registration/student/`, data, {headers: headers}).then(res => {
+            await axios.post(`https://test1223.onrender.com/api/registration/student/`, data, {headers: headers}).then(res => {
                 console.log(res);
                 setUserData({
                     email: res.data.email,
@@ -55,9 +55,6 @@ const CreateUserProfile = ({accessToken, email, setUserData}) => {
                 })
                 navigate("/")
             })
-
-            // const res = await axios.get("http://localhost:5000/api/registration")
-            // console.log(res.data);
         }
         catch(e) {
             console.log(e);
@@ -76,9 +73,6 @@ const CreateUserProfile = ({accessToken, email, setUserData}) => {
                     </div>
                 </div>
                 <div className="userProfileHeader__section">
-                    {/* <div className="userProfileEscape_img" style={{cursor: 'pointer'}}>
-                        <img src={escape} alt="" />
-                    </div> */}
                 </div>
             </header>
             <div className="userProfileUser_profile">
@@ -99,9 +93,6 @@ const CreateUserProfile = ({accessToken, email, setUserData}) => {
                                 <div className="userProfileInput_field">
                                     <input type="text" placeholder="Имя..." value={name} onChange={(e)=>setName(e.target.value)} />
                                 </div>
-                                {/* <div className="userProfileInput_field">
-                                    <input type="email" placeholder="Почта..." />
-                                </div> */}
                                 <div className="userProfileInput_field">
                                     <input type="text" placeholder="Telegram..." value={telegram} onChange={(e)=>setTelegram(e.target.value)} />
                                 </div>
@@ -109,12 +100,6 @@ const CreateUserProfile = ({accessToken, email, setUserData}) => {
                         </div>
                         <label htmlFor="skills" className="userProfileH2 userProfileLabel">Навыки</label>
                         <textarea placeholder="Расскажите нам, какими навыками обладаете?" className="userProfileText_area" id="skills" value={skills} onChange={(e)=>setSkills(e.target.value)}></textarea>
-                        
-                        {/* <label htmlFor="portfolio" className="userProfileH2 userProfileLabel">Портфолио</label>
-                        <div className="userProfileInput_field"><input type="text" placeholder="Введите ссылку на портфолио..." id="portfolio" required /></div>
-                        
-                        <label htmlFor="information" className="userProfileH2 userProfileLabel">О себе</label>
-                        <textarea placeholder="Расскажите что-нибудь о себе" className="userProfileText_area" id="information"></textarea> */}
                         <input type="submit" value="Сохранить" className="userProfileBtn" />
                     </div>
                 </form>

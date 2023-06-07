@@ -29,7 +29,7 @@ const Registration = (props) => {
         const role = roleChoice ? "employer" : "student";
 
         try {
-            await axios.post("http://localhost:5000/api/registration", {
+            await axios.post("https://test1223.onrender.com/api/registration", {
                 email,
                 password,
                 role
@@ -65,7 +65,7 @@ const Registration = (props) => {
         e.preventDefault()
         
         try {
-            await axios.post("http://localhost:5000/api/login", {
+            await axios.post("https://test1223.onrender.com/api/login", {
                 email,
                 password,
             }).then(res => {

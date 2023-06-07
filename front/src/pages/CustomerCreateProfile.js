@@ -50,7 +50,7 @@ const CustomerCreateProfile = ({accessToken, email, setUserData}) => {
             data.append("CompanyLogo", companyLogo)
             data.append("logoFileName", companyLogo.name)
 
-            await axios.post(`http://localhost:5000/api/registration/employer/`, data, {headers: headers}).then(res => {
+            await axios.post(`https://test1223.onrender.com/api/registration/employer/`, data, {headers: headers}).then(res => {
                 console.log(res);
                 setUserData({
                     email: res.data.email,
@@ -64,9 +64,6 @@ const CustomerCreateProfile = ({accessToken, email, setUserData}) => {
                 })
                 navigate("/")
             })
-
-            // const res = await axios.get("http://localhost:5000/api/registration")
-            // console.log(res.data);
         }
         catch(e) {
             console.log(e);
